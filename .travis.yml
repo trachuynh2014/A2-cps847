@@ -1,0 +1,26 @@
+sudo: required
+language: python
+services:
+  - docker
+
+script:
+  - docker image build -t trachuynh2014/docker .
+
+after_success:
+  #log in to docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  #take built images and push to DOcker hub
+  - docker push trachuynh2014/docker
+  #test
+  - bash <(curl -s https://codecov.io/bash)
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-1"
+  app: "docker"
+  env: "Docker-env"
+  bucket_name: "elasticbeanstalk-us-east-1-251177172034"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
