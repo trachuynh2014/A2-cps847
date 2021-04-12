@@ -3,7 +3,12 @@ language: python
 services:
   - docker
 
+install:
+  - "pip install -r requirements.txt"
+
 script:
+  - coverage run testing.py
+
   - docker image build -t trachuynh2014/docker .
 
 after_success:
