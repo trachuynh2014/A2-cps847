@@ -7,7 +7,7 @@ install:
   - "pip install -r requirements.txt"
 
 script:
-  - coverage run testing.py
+  - coverage run app.py
 
   - docker image build -t trachuynh2014/docker .
 
