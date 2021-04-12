@@ -1,0 +1,29 @@
+Building image: docker build -t "web_app" .
+
+[+] Building 6.5s (10/10) FINISHED
+ => [internal] load build definition from Dockerfile                                                                                                                                                                              0.0s 
+ => => transferring dockerfile: 372B                                                                                                                                                                                              0.0s 
+ => [internal] load .dockerignore                                                                                                                                                                                                 0.0s 
+ => => transferring context: 2B                                                                                                                                                                                                   0.0s 
+ => [internal] load metadata for docker.io/library/python:3.6.1                                                                                                                                                                   0.8s 
+ => [auth] library/python:pull token for registry-1.docker.io                                                                                                                                                                     0.0s 
+ => CACHED [1/4] FROM docker.io/library/python:3.6.1@sha256:98fb5342195e69ffda54a7584ed202be71154c7ef64931da5bec5a41739c78d5                                                                                                      0.0s 
+ => [internal] load build context                                                                                                                                                                                                 0.0s 
+ => => transferring context: 294.62kB                                                                                                                                                                                             0.0s 
+ => [2/4] WORKDIR /docker-flask-test                                                                                                                                                                                              0.0s 
+ => [3/4] ADD . /docker-flask-test                                                                                                                                                                                                0.0s 
+ => [4/4] RUN pip install -r requirements.txt                                                                                                                                                                                     5.4s 
+ => exporting to image                                                                                                                                                                                                            0.1s 
+ => => exporting layers                                                                                                                                                                                                           0.1s 
+ => => writing image sha256:1f8de496aaee817a9de37db7d3d61609834013280f5bfe77915ff8f5e5200ae6                                                                                                                                      0.0s 
+ => => naming to docker.io/library/web_app
+
+*****************************************************************************************************
+
+
+Run the container: docker run -ti --name app_container web_app
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+OK
